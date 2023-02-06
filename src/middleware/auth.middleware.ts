@@ -2,12 +2,6 @@ import { BadRequestException, Injectable, NestMiddleware, UnauthorizedException 
 import { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 
-declare module 'express' {
-    export interface Request {
-      user: any;
-    }
-  }
-
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
   use(req: Request, next: () => void) {
@@ -20,7 +14,7 @@ export class AuthMiddleware implements NestMiddleware {
       req.user = decoded;
       next();
     } catch (error) {
-      return new BadRequestException();
+      return new BadRequestException('Invalid Token');
     }
   }
 }
