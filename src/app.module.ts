@@ -4,6 +4,7 @@ import { UserModule } from './user/user.module';
 import { RoleModule } from './role/role.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { env } from 'process';
+import { CompanyModule } from './company/company.module';
 
 
 @Module({
@@ -18,7 +19,8 @@ import { env } from 'process';
     }),
     AuthModule,
     UserModule,
-    RoleModule],
+    RoleModule,
+    CompanyModule],
   controllers: [],
   providers: [],
 })
