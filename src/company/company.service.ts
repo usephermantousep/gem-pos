@@ -21,10 +21,7 @@ export class CompanyService {
 
   async findOne(id: string): Promise<ICompany> {
     const company: ICompany = await this.companyModel.findById(id);
-    if (!company) {
-      throw new NotFoundException(`Company not found`);
-    }
-
+    if (!company) throw new NotFoundException(`Company not found`);
     return company;
   }
 

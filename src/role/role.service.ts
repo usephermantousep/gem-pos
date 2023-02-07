@@ -20,10 +20,7 @@ export class RoleService {
 
   async findOne(id: string): Promise<IRole> {
     const role: IRole = await this.roleModel.findById(id);
-    if (!role) {
-      throw new NotFoundException(`Role not found`);
-    }
-
+    if (!role) throw new NotFoundException(`Role not found`);
     return role;
   }
 
@@ -40,7 +37,7 @@ export class RoleService {
     return {};
   }
 
-  async seed() : Promise<void> {
+  async seed(): Promise<void> {
     const roles = [
       { name: 'admin', description: 'Administrator role' },
       { name: 'owner', description: 'Owner role' },

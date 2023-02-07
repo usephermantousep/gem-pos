@@ -1,7 +1,8 @@
 import { Document } from 'mongoose';
 
 export interface IUser extends Document {
-   readonly _id: String;
-   readonly createdAt : number;
-   readonly updateddAt : number;
+   readonly name: string;
+   readonly username: string;
+   readonly company_id: string;
+   readonly role_id: string[];
 }
