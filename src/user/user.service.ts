@@ -54,6 +54,24 @@ export class UserService {
     return user;
   }
 
+  async findOneByUsername(username: string): Promise<IUser> {
+    const user = await this.userModel.findOne({ username }, '-createdAt -updatedAt -__v', {
+      populate: [{
+        path: 'role_id',
+        model: 'Role',
+        select: 'name'
+      }, {
+        path: 'company_id',
+        model: 'Company',
+        select: 'name'
+      }]
+    });
+    if (!user) throw new NotFoundException();
+    return user;
+  }
+
+
+
   async update(id: string, updateUserDto: UpdateUserDto): Promise<Object> {
     const user = await this.findOne(id);
     await user.updateOne(updateUserDto);
