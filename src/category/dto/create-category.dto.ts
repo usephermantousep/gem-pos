@@ -1,11 +1,11 @@
 import { IsNotEmpty, IsString } from "class-validator";
 
-export class LoginDto {
+export class CreateCategoryDto {
     @IsNotEmpty()
     @IsString()
-    username: string;
+    name : string;
 
     @IsNotEmpty()
     @IsString()
-    password: string;
+    company_id: string;
 }

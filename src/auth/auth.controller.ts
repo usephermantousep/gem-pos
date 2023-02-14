@@ -14,16 +14,14 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @Post('logout')
-  async logout() {
-
+  async logout(@Request() request: Request) {
+    return await this.jwtServiceExtend.delete(request.user.token);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('fetch-user')
   async fetch(@Request() request: Request) {
-    const isExistToken = await this.jwtServiceExtend.findByToken(request.rawHeaders[1].split(' ')[1]);
-    if (!isExistToken) throw new ForbiddenException();
-    console.log(request.user.id);
-    return await this.authService.fetch(request.user.id);
+    console.log(request.user);
+    return await this.authService.fetch(request.user.user_id);
   }
 }
