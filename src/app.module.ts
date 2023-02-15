@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { env } from 'process';
 import { CompanyModule } from './company/company.module';
 import { CategoryProductModule } from './category-product/category-product.module';
+import { ProductModule } from './product/product.module';
 
 
 @Module({
@@ -22,7 +23,8 @@ import { CategoryProductModule } from './category-product/category-product.modul
     UserModule,
     RoleModule,
     CompanyModule,
-    CategoryProductModule],
+    CategoryProductModule,
+    ProductModule],
   controllers: [],
   providers: [],
 })

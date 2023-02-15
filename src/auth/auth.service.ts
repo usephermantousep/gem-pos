@@ -8,7 +8,11 @@ import { comparePassword } from 'src/helpers/bcrypt.helper';
 
 @Injectable()
 export class AuthService {
-    constructor(private readonly userService: UserService, private readonly jwtServiceExtend: JwtServiceExtend, private jwtService: JwtService) { }
+    constructor(
+        private readonly userService: UserService,
+        private readonly jwtServiceExtend: JwtServiceExtend,
+        private jwtService: JwtService,
+    ) { }
 
     async login(loginDto: LoginDto): Promise<Object> {
         try {
